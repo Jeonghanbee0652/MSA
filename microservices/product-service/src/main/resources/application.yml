@@ -1,5 +1,14 @@
 server.port: 7002
+server.error.include-message: always
+
 logging:
   level:
     root: INFO
-    se.magnus.microservices: DEBUG
+    se.magnus: DEBUG
+
+spring.web.error.include-message: always
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080
