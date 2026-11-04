@@ -17,7 +17,19 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	mapstructVersion = "1.6.3"
+}
+
 dependencies {
+	implementation "org.springframework.boot:spring-boot-starter-data-mongodb"
+	testImplementation "org.springframework.boot:spring-boot-testcontainers"
+	testImplementation "org.testcontainers:testcontainers-junit-jupiter"
+	testImplementation "org.testcontainers:testcontainers-mongodb"
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+	testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	implementation project(':api')
 	implementation project(':util')
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
