@@ -1,7 +1,5 @@
 package se.magnus.microservices.composite.product;
 
-import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
-
 import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -21,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
 import org.springframework.cloud.stream.binder.test.OutputDestination;
 import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
 import org.springframework.context.annotation.Import;
@@ -38,7 +37,11 @@ import se.magnus.api.event.Event;
 @AutoConfigureWebTestClient
 @SpringBootTest(
   webEnvironment = RANDOM_PORT,
-  properties = {"spring.main.allow-bean-definition-overriding=true", "eureka.client.enabled=false"})
+  classes = {TestSecurityConfig.class},
+  properties = {
+    "spring.security.oauth2.resourceserver.jwt.issuer-uri=",
+    "spring.main.allow-bean-definition-overriding=true",
+    "eureka.client.enabled=false"})
 @Import({TestChannelBinderConfiguration.class})
 class MessagingTests {
 

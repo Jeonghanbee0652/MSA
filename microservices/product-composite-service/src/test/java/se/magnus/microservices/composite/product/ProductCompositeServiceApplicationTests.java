@@ -1,7 +1,5 @@
 package se.magnus.microservices.composite.product;
 
-import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
-
 import static java.util.Collections.singletonList;
 import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -12,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -25,7 +24,13 @@ import se.magnus.api.exceptions.NotFoundException;
 import se.magnus.microservices.composite.product.services.ProductCompositeIntegration;
 
 @AutoConfigureWebTestClient
-@SpringBootTest(webEnvironment = RANDOM_PORT, properties = {"eureka.client.enabled=false"})
+@SpringBootTest(
+  webEnvironment = RANDOM_PORT,
+  classes = {TestSecurityConfig.class},
+  properties = {
+    "spring.security.oauth2.resourceserver.jwt.issuer-uri=",
+    "spring.main.allow-bean-definition-overriding=true",
+    "eureka.client.enabled=false"})
 class ProductCompositeServiceApplicationTests {
 
   private static final int PRODUCT_ID_OK = 1;
