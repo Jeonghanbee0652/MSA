@@ -1,41 +1,23 @@
-spring.security.oauth2.resourceserver.jwt.issuer-uri: http://${app.auth-server}:9999
-spring.cloud.stream.function.autodetect: false
-server.forward-headers-strategy: framework
-spring.application.name: product-composite
-
-app:
-  eureka-username: u
-  eureka-password: p
-  eureka-server: localhost
-  auth-server: localhost
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
-    initialInstanceInfoReplicationIntervalSeconds: 5
-    registryFetchIntervalSeconds: 5
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 5
-
 spring.jackson.mapper.allow-final-fields-as-mutators: true
-spring.web.error.include-message: always
+spring.cloud.stream.function.autodetect: false
 springdoc:
-  swagger-ui:
-    oauth2-redirect-url: /swagger-ui/oauth2-redirect.html
-    oauth:
-      clientId: writer
-      clientSecret: secret-writer
-      useBasicAuthenticationWithAccessCodeGrant: true
-  oAuthFlow:
-    authorizationUrl: https://localhost:8443/oauth2/authorize
-    tokenUrl: https://localhost:8443/oauth2/token
-  cache.disabled: true
   swagger-ui.path: /openapi/swagger-ui.html
   api-docs.path: /openapi/v3/api-docs
   packagesToScan: se.magnus.microservices.composite.product
   pathsToMatch: /**
+  cache.disabled: true
+
+  swagger-ui:
+    oauth2-redirect-url: /swagger-ui/oauth2-redirect.html
+    oauth:
+      clientId: writer
+      clientSecret: '{cipher}debb77857798ba70441b229de88624213b0a00b284f95fe31d1378d117cf3ffa'
+      useBasicAuthenticationWithAccessCodeGrant: true
+  oAuthFlow:
+    authorizationUrl: https://localhost:8443/oauth2/authorize
+    tokenUrl: https://localhost:8443/oauth2/token
+
+server.forward-headers-strategy: framework
 
 api:
 
@@ -98,9 +80,7 @@ api:
 server.port: 7001
 server.error.include-message: always
 
-
 spring.cloud.stream:
-  defaultBinder: rabbit
   default.contentType: application/json
   bindings:
     products-out-0:
@@ -116,34 +96,18 @@ spring.cloud.stream:
       producer:
         required-groups: auditGroup
 
-spring.cloud.stream.kafka.binder:
-  brokers: 127.0.0.1
-  defaultBrokerPort: 9092
-
-spring.rabbitmq:
-  host: 127.0.0.1
-  port: 5672
-  username: guest
-  password: guest
+spring.security.oauth2.resourceserver.jwt.issuer-uri: http://${app.auth-server}:9999
 
 logging:
   level:
     root: INFO
     se.magnus: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
 
-management.endpoint.health.show-details: "ALWAYS"
-management.endpoints.web.exposure.include: "*"
 ---
 spring.config.activate.on-profile: docker
-app.eureka-server: eureka
-app.auth-server: auth-server
 
 server.port: 8080
-
-
-spring.rabbitmq.host: rabbitmq
-
-spring.cloud.stream.kafka.binder.brokers: kafka
 
 ---
 spring.config.activate.on-profile: streaming_partitioned
@@ -159,11 +123,3 @@ spring.cloud.stream.bindings.recommendations-out-0.producer:
 spring.cloud.stream.bindings.reviews-out-0.producer:
   partition-key-expression: headers['partitionKey']
   partition-count: 2
-
----
-spring.config.activate.on-profile: kafka
-
-management.health.rabbit.enabled: false
-spring.cloud.stream.defaultBinder: kafka
-spring.kafka.bootstrap-servers: kafka:9092
-spring.cloud.stream.kafka.binder.replication-factor: 1

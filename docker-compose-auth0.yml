@@ -1,0 +1,7 @@
+services:
+  gateway:
+    environment:
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI=https://${TENANT}/
+  product-composite:
+    environment:
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI=https://${TENANT}/
