@@ -16,3 +16,5 @@
 2026-11-27T14:03:58.833+09:00  INFO 59052 --- [           main] s.m.m.c.review.ReviewServiceApplication  : Started ReviewServiceApplication in 2.569 seconds (process running for 3.103)
 2026-11-27T14:04:32.040+09:00 DEBUG 59052 --- [or-http-epoll-2] s.m.m.c.r.services.ReviewServiceImpl     : /reviews response size: 3
 2026-11-27T14:06:05.892+09:00 DEBUG 59052 --- [or-http-epoll-3] s.m.m.c.r.services.ReviewServiceImpl     : /reviews response size: 3
+2026-11-27T14:46:12.817+09:00  INFO 59052 --- [ionShutdownHook] o.s.boot.reactor.netty.GracefulShutdown  : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-27T14:46:12.826+09:00  INFO 59052 --- [ netty-shutdown] o.s.boot.reactor.netty.GracefulShutdown  : Graceful shutdown complete

@@ -16,3 +16,5 @@
 2026-11-27T14:03:51.620+09:00  INFO 58907 --- [           main] m.m.c.r.RecommendationServiceApplication : Started RecommendationServiceApplication in 2.601 seconds (process running for 3.091)
 2026-11-27T14:04:31.730+09:00 DEBUG 58907 --- [or-http-epoll-2] s.m.m.c.r.s.RecommendationServiceImpl    : /recommendation response size: 3
 2026-11-27T14:06:05.877+09:00 DEBUG 58907 --- [or-http-epoll-3] s.m.m.c.r.s.RecommendationServiceImpl    : /recommendation response size: 3
+2026-11-27T14:46:12.873+09:00  INFO 58907 --- [ionShutdownHook] o.s.boot.reactor.netty.GracefulShutdown  : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-27T14:46:12.892+09:00  INFO 58907 --- [ netty-shutdown] o.s.boot.reactor.netty.GracefulShutdown  : Graceful shutdown complete
