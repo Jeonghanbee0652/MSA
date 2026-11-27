@@ -1,0 +1,18 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-27T14:03:49.671+09:00  INFO 58907 --- [           main] m.m.c.r.RecommendationServiceApplication : Starting RecommendationServiceApplication v1.0.0-SNAPSHOT using Java 21.0.9 with PID 58907 (/home/user/msa/microservices/recommendation-service/build/libs/recommendation-service-1.0.0-SNAPSHOT.jar started by user in /home/user/msa)
+2026-11-27T14:03:49.676+09:00 DEBUG 58907 --- [           main] m.m.c.r.RecommendationServiceApplication : Running with Spring Boot v4.0.9, Spring v7.0.10
+2026-11-27T14:03:49.678+09:00  INFO 58907 --- [           main] m.m.c.r.RecommendationServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2026-11-27T14:03:51.194+09:00  INFO 58907 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-27T14:03:51.614+09:00  INFO 58907 --- [           main] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 7003 (http)
+2026-11-27T14:03:51.620+09:00  INFO 58907 --- [           main] m.m.c.r.RecommendationServiceApplication : Started RecommendationServiceApplication in 2.601 seconds (process running for 3.091)
+2026-11-27T14:04:31.730+09:00 DEBUG 58907 --- [or-http-epoll-2] s.m.m.c.r.s.RecommendationServiceImpl    : /recommendation response size: 3
+2026-11-27T14:06:05.877+09:00 DEBUG 58907 --- [or-http-epoll-3] s.m.m.c.r.s.RecommendationServiceImpl    : /recommendation response size: 3
